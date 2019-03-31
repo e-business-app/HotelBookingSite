@@ -1,0 +1,40 @@
+body, html {
+  height: 100%;
+}
+.bg {
+  /* The image used */
+  background-image: url("images/santa-monica-pier.jpg"); 
+
+  /* Half height */
+  height: 50%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hotelTable {   
+   border-collapse:collapse;
+   border:1px solid #000000;
+}
+
+.hotelTableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.hotelTableOddRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;
+   border-bottom:1px solid #000000; 
+   padding:2px;
+}
+
+.hotelTableEvenRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
+   border:4px solid #000000;
+}

@@ -17,6 +17,7 @@ public class Hotel {
 	private String city;
 	private String state;
 	private int price;
+	private String image;
 	
 	public Hotel() {
 		
@@ -122,6 +123,18 @@ public class Hotel {
 	public String toString() {
 		return "Hotel [id=" + id + ", hotelName=" + hotelName + ", location=" + location + ", rooms=" + rooms
 				+ ", city=" + city + ", state=" + state + ", price=" + price + "]";
+	}
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }

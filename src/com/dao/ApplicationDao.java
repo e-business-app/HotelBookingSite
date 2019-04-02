@@ -49,12 +49,41 @@ public class ApplicationDao {
 				hotel.setPrice(set.getInt("price"));
 				hotel.setRooms(set.getInt("rooms"));
 				hotel.setState(set.getString("state"));
+				hotel.setImage(set.getString("image"));
 				hotels.add(hotel);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return hotels;
+	}
+	
+	public List<Hotel> checkAvailability(int rooms,String startDate,String endDate){
+		Hotel hotel=null;
+		List <Hotel> hotels= new ArrayList<Hotel>();
+		
+		try {
+			Connection connection = DBConnection.getConnectionToDatabase();
+			String sql = "SELECT H.* FROM Hotel.hotels H WHERE H.id NOT IN (SELECT TotalRooms.id AS hotelId FROM (SELECT HBD.hotelId,HBD.date,SUM(HBD.rooms) AS rooms FROM Hotel.BookingDays HBD WHERE HBD.date>='"+startDate+"' AND HBD.date<'"+endDate+"' GROUP BY HBD.hotelId, HBD.date) BookedRooms JOIN Hotel.Hotels TotalRooms ON TotalRooms.id = BookedRooms.hotelId WHERE (TotalRooms.rooms-BookedRooms.rooms)<"+rooms+")";
+			Statement statement = connection.createStatement();
+			ResultSet set = statement.executeQuery(sql);
+			while(set.next()) {
+				hotel=new Hotel();
+				hotel.setId(set.getInt("id"));
+				hotel.setCity(set.getString("city"));
+				hotel.setHotelName(set.getString("hotelName"));
+				hotel.setLocation(set.getString("location"));
+				hotel.setPrice(set.getInt("price"));
+				hotel.setRooms(set.getInt("rooms"));
+				hotel.setState(set.getString("state"));
+				hotel.setImage(set.getString("image"));
+				hotels.add(hotel);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return hotels;
+		
 	}
 
 }

@@ -1,7 +1,7 @@
 # HotelBookingSite
 Hotel Booking Site built on JSP, Bootstrap and MySQL.
 
-## Steps to run aplication
+## Steps to run application
 
 1) git clone https://github.com/e-business-app/HotelBookingSite.git
 
@@ -11,4 +11,8 @@ Hotel Booking Site built on JSP, Bootstrap and MySQL.
 
 4) Start your tomcat server and check it out, hotels listing, check for availability, temporary session saved booking and followed by final booking features have been added.
 
+## Documentation:
 
+The documentation can be accessed from the link below.
+
+https://e-business-app.github.io/HotelBookingSite/

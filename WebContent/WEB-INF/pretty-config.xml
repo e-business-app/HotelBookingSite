@@ -8,5 +8,9 @@
 		<pattern value="/checkout" />
 		<view-id value="/faces/checkout.xhtml" />
 	</url-mapping>
+	<url-mapping id="book">
+		<pattern value="/book" />
+		<view-id value="/faces/book.xhtml" />
+	</url-mapping>
 
 </pretty-config>

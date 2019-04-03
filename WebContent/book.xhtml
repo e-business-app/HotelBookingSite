@@ -25,47 +25,73 @@
         	<div class="jumbotron bg">
         	<h:form>
         		<h4>Your booked Hotels:</h4>
-        		<h:outputText value=" Check In: " />
-				<p:inputText value="#{HotelCheckController.startDate}" required="true" requiredMessage="start Date Name cannot be Blank" type="date"/>
-				<h:outputText value=" Checkout: " />
-				<p:inputText value="#{HotelCheckController.endDate}" required="true" requiredMessage="End Date cannot be Blank" type="date" /> 
-				<h:outputText value=" Enter Number of rooms: " />
-				<p:inputText value="#{HotelCheckController.rooms}" required="true" requiredMessage="Please enter number of rooms" type="number"/>
-				<h:commandButton value="Search Hotels" type="submit" action="#{HotelCheckController.runDatabaseCall()}" />
 				</h:form>
-        		<h:dataTable value = "#{HotelCheckController.hotels}" var = "hotel"
+        		<h:dataTable value = "#{TemporaryBookingController.temporaryBookings}" var = "TemporaryBooking"
 					   styleClass = "hotelTable mt-4"
             headerClass = "hotelTableHeader"
             rowClasses = "hotelTableOddRow,hotelTableEvenRow">
 					   <h:column>    				
-					      <f:facet name = "header">Hotel Name</f:facet>    				
-					      #{hotel.hotelName}
+					      <f:facet name = "header">Hotel Id</f:facet>    				
+					      #{TemporaryBooking.hotelId}
+					   </h:column>
+					   <h:column>
+					      <f:facet name = "header">Hotel Name</f:facet>
+					      #{TemporaryBooking.hotelName}
 					   </h:column>
 					   <h:column>
 					      <f:facet name = "header">Rooms You Need</f:facet>
-					      #{HotelCheckController.rooms}
+					      #{TemporaryBooking.rooms}
 					   </h:column>
 					   <h:column>
-					      <f:facet name = "header">Days</f:facet>
-					      #{HotelCheckController.diffDate}
+					      <f:facet name = "header">Check-In</f:facet>
+					      #{TemporaryBooking.startDate}
 					   </h:column>
 					   <h:column>
-					      <f:facet name = "header">Price per room</f:facet>
-					      #{hotel.price}
+					      <f:facet name = "header">Check-out</f:facet>
+					      #{TemporaryBooking.endDate}
 					   </h:column>
 					   <h:column>
 					      <f:facet name = "header">Total Price</f:facet>
-					      #{hotel.price * (HotelCheckController.diffDate) * HotelCheckController.rooms}
+					      #{TemporaryBooking.price}
 					   </h:column>
 					   <h:column>
-					      <f:facet name = "header">Book Hotel</f:facet>
-					      <h:form>
-					      <h:commandButton value="Book Room" action="#{TemporaryBookingController.addTemporaryBookings(hotel.id,hotel.hotelName,hotel.image,HotelCheckController.startDate,HotelCheckController.endDate,HotelCheckController.rooms,hotel.price * (HotelCheckController.diffDate) * HotelCheckController.rooms)}" />
-					      </h:form>
+					      <f:facet name = "header">Image</f:facet>
+					      <h:graphicImage name = "#{TemporaryBooking.image}" class="table-image"/> 
 					   </h:column>
 				</h:dataTable>
+				<f:facet name = "header">Confirm Booking </f:facet>
+				        <c:set var="total" value="0"/>
+        <c:forEach items="#{TemporaryBookingController.temporaryBookings}" var="t">
+            <c:set var="total" value="#{total + t.price}"/>
+        </c:forEach>
+        <h4 class="mt-4 float-right text-dark bg-white"><h:outputText value="Total Price: #{total}"/>
+        </h4>
+        
+        
         	</div> 
+        	<c:if test="${not empty TemporaryBookingController.temporaryBookings}">
+        <h:form>
+        <footer>
+	        <div class="row">
+	        	<div class="col-sm-2">
+					<h4>Enter your Name: </h4>
+				</div>
+	        	<div class="col-sm-6">
+			    	<p:inputText id="customerName" value="#{BookingController.customerName}" label="Customer Name" required="true" requiredMessage="Customer Name cannot be Blank" type="text"/>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+				</div>
+				<div class="col-sm-6">
+					<h:commandButton value="Confirm Booking" type="submit" action="#{BookingController.addBookings(TemporaryBookingController.temporaryBookings, HotelController)}" />
+				</div>
+			</div>	
+		</footer>
+		</h:form>
+		</c:if>
         </div>
     </h:body>
 
 </html>
+

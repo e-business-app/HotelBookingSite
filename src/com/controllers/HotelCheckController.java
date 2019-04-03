@@ -19,16 +19,17 @@ import org.primefaces.event.SelectEvent;
 import com.beans.Hotel;
 import com.dao.ApplicationDao;
 
-@ManagedBean(name = "CheckoutController", eager = true)
+@ManagedBean(name = "HotelCheckController", eager = true)
 @SessionScoped  
-public class CheckoutController {  
+public class HotelCheckController {  
 private String startDate;  
 private String endDate;
 private long diffDate;
 private int rooms;
 private int days;
+private boolean bookingSelected;
 private List<Hotel> hotels;
-	public CheckoutController() {
+	public HotelCheckController() {
 		System.out.println("Check Rooms Available");
 	}
 	/**
@@ -105,6 +106,18 @@ private List<Hotel> hotels;
 		this.days = days;
 	}
 	/**
+	 * @return the bookingSelected
+	 */
+	public boolean isBookingSelected() {
+		return bookingSelected;
+	}
+	/**
+	 * @param bookingSelected the bookingSelected to set
+	 */
+	public void setBookingSelected(boolean bookingSelected) {
+		this.bookingSelected = bookingSelected;
+	}
+	/**
 	 * 
 	 * @return
 	 * 
@@ -117,6 +130,10 @@ private List<Hotel> hotels;
     	LocalDate startDateFormat = LocalDate.parse(this.startDate, formatter);
     	LocalDate endDateFormat = LocalDate.parse(this.endDate, formatter);
     	this.diffDate=endDateFormat.toEpochDay()-startDateFormat.toEpochDay();
+    	if(this.diffDate<=0 || this.rooms<=0) {
+    		this.hotels=null;
+    		return "error in search";
+    	}
     	}catch(Exception e) {
     		this.diffDate=0;
     	}

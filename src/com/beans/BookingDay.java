@@ -7,6 +7,8 @@ public class BookingDay {
 	private int rooms;
 	private Date date;
 	private int hotelId;
+	private float price;
+	
 	public BookingDay() {
 		
 	}
@@ -16,13 +18,15 @@ public class BookingDay {
 	 * @param rooms
 	 * @param date
 	 * @param hotelId
+	 * @param price 
 	 */
-	public BookingDay(int id, int bookingId, int rooms, Date date, int hotelId) {
+	public BookingDay(int id, int bookingId, int rooms, Date date, int hotelId, float price) {
 		this.id = id;
 		this.bookingId = bookingId;
 		this.rooms = rooms;
 		this.date = date;
 		this.hotelId = hotelId;
+		this.price=price;
 	}
 	
 	
@@ -86,14 +90,27 @@ public class BookingDay {
 	public void setHotelId(int hotelId) {
 		this.hotelId = hotelId;
 	}
+
+	/**
+	 * @return the price
+	 */
+	public float getPrice() {
+		return price;
+	}
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "BookingDay [id=" + id + ", bookingId=" + bookingId + ", rooms=" + rooms + ", date=" + date
-				+ ", hotelId=" + hotelId + "]";
+				+ ", hotelId=" + hotelId + ", price=" + price + "]";
 	}
-
 
 }

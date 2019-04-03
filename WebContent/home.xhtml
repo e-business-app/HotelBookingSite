@@ -3,8 +3,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"  
+	xmlns:p="http://primefaces.org/ui">
 	
     <h:head>
         <title>California Booking</title>
@@ -21,8 +23,9 @@
    		</ui:insert>
         
         <div class="container-fluid mt-4">
+        
         	<div class="jumbotron bg">
-        		<h4>Current Hotels Available:</h4>
+        		<h4>Current Hotels Available: ---> ${SuccessController.successMessage} </h4>
         		<h:dataTable value = "#{HotelController.hotels}" var = "hotel"
 					   id = "hotelTable">
 					   <h:column>    				

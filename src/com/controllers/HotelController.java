@@ -1,5 +1,6 @@
 package com.controllers;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -18,6 +19,7 @@ import com.beans.Hotel;
 public class HotelController {
 	private List<Hotel> hotels;
 	public ApplicationDao dao;
+	
 	public HotelController() {
 		System.out.println("Hotel Start");   
 	}
@@ -26,6 +28,9 @@ public class HotelController {
 		ApplicationDao dao=new ApplicationDao();
 		return dao.allHotels();	
 	}
+
+	
+
 	/*
 	public HotelController() {
 		hotels = new ArrayList<>();

@@ -6,8 +6,11 @@ public class Booking {
 	public Booking() {
 		// TODO Auto-generated constructor stub
 	}
-	public Booking(int id, String customerName) {
-		this.id= id;
+	public Booking(int id,String customerName) {
+		this.id=id;
+		this.customerName= customerName;
+	}
+	public Booking(String customerName) {
 		this.customerName= customerName;
 	}
 	/**

@@ -32,7 +32,7 @@ body, html {
 }
 th,td{
 	border-right: 2px solid black;
-	width: 20%;
+	width: 10%;
 }
 .hotelTableEvenRow {
    text-align:center;

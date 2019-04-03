@@ -16,8 +16,8 @@ import java.time.LocalDate;
 
 /**
 * <h1>Application Dao</h1>
-* This class implements all the methods to access the PlayerInfo Table in the 
-* Player Database
+* This class implements all the methods to access the Hotels,Bookings and BookingDays Table in the 
+* Hotel Database
 *
 * @author  https://github.com/e-business-app
 * @version 1.0
@@ -27,10 +27,9 @@ import java.time.LocalDate;
 public class ApplicationDao {
 	/**
 	 * 
-	 * Pass a String and search for players in the database which match the 
-	 * fullname.
+	 * Search for all hotels in the database.
 	 * 
-	 * It will return all the players in the form of a list.
+	 * It will return all the hotels in the form of a list.
 	 * 
 	 * @param searchPlayer
 	 * @return the list of Player Objects Found.
@@ -101,7 +100,7 @@ public class ApplicationDao {
 	}
 	/**
 	 * 
-	 * Check if hotels are available
+	 * Check if hotel rooms are available
 	 * 
 	 * @param rooms
 	 * @param startDate
@@ -135,6 +134,12 @@ public class ApplicationDao {
 		
 	}
 	
+	/**
+	 * Add Booking in Booking Tabe 
+	 * 
+	 * @param booking
+	 * @return
+	 */
 	public int addBooking(Booking booking) {
 		String query = "INSERT INTO Bookings (customerName,email,number) VALUES ('"+booking.getCustomerName()+"','"+booking.getEmail()+"',"+booking.getNumber()+")";
 		Connection connection = DBConnection.getConnectionToDatabase();
@@ -165,7 +170,17 @@ public class ApplicationDao {
 
 		return id;
 	}
-
+	/**
+	 * 
+	 * Add Specific Booking Day in BookingDays Table
+	 * 
+	 * @param date
+	 * @param hotelId
+	 * @param price
+	 * @param rooms
+	 * @param bookingId
+	 * @return
+	 */
 	public int addBookingDay(String date, int hotelId, float price, int rooms, int bookingId) {
 		// TODO Auto-generated method stub
 		String query = "INSERT INTO BookingDays (bookingId,rooms,date,hotelId,price) VALUES ('"+bookingId+"','"+rooms+"','"+date+"','"+hotelId+"','"+price+"')";

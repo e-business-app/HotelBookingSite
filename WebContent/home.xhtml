@@ -25,7 +25,13 @@
         <div class="container-fluid mt-4">
         
         	<div class="jumbotron bg">
-        		<h4>Current Hotels Available: ---> ${SuccessController.successMessage} </h4>
+        		<h4>Current Hotels Available: --->  </h4>
+        	<c:if test="${not empty SuccessController.successMessage}">	
+		   		<div class="alert alert-success alert-dismissible">
+		  			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		  			<strong>${SuccessController.successMessage}</strong> 
+				</div>
+			</c:if>
         		<h:dataTable value = "#{HotelController.hotels}" var = "hotel"
 					   id = "hotelTable">
 					   <h:column>    				

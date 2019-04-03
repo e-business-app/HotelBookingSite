@@ -5,7 +5,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name = "SuccessController", eager = true)
-@SessionScoped
+@RequestScoped
 public class SuccessController {
 
 	private static String successMessage;

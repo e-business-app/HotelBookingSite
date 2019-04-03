@@ -85,7 +85,7 @@ public class BookingController {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 	            .getExternalContext().getSession(false);
 	    session.invalidate();
-	    String successMessage="Hi, "+customerName+"! Successfully Booked your booking ID for reference is #"+bookingId;
+	    String successMessage="Last Booking made by: "+customerName+"! Successfully Booked your booking ID for reference is #"+bookingId;
 	    SuccessController.setSuccessMessage(successMessage); 
 		return "home";
 		

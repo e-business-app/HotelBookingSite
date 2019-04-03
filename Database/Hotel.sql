@@ -33,7 +33,7 @@ CREATE TABLE `BookingDays` (
   `price` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_idx1` (`hotelId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,6 @@ CREATE TABLE `BookingDays` (
 
 LOCK TABLES `BookingDays` WRITE;
 /*!40000 ALTER TABLE `BookingDays` DISABLE KEYS */;
-INSERT INTO `BookingDays` VALUES (1,1,2,'2019-04-02',1,'400.0'),(2,1,2,'2019-04-03',1,'400.0'),(3,2,2,'2019-03-01',1,'800.0'),(4,2,2,'2019-03-02',1,'800.0'),(5,2,2,'2019-03-03',1,'800.0'),(6,2,2,'2019-03-04',1,'800.0');
 /*!40000 ALTER TABLE `BookingDays` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,8 +55,10 @@ DROP TABLE IF EXISTS `Bookings`;
 CREATE TABLE `Bookings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `customerName` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `number` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +67,6 @@ CREATE TABLE `Bookings` (
 
 LOCK TABLES `Bookings` WRITE;
 /*!40000 ALTER TABLE `Bookings` DISABLE KEYS */;
-INSERT INTO `Bookings` VALUES (1,'Hoshang'),(2,'TestBot Hoshang');
 /*!40000 ALTER TABLE `Bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,4 +117,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-02 22:03:16
+-- Dump completed on 2019-04-03 14:26:10

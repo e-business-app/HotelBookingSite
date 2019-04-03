@@ -72,21 +72,55 @@
         	<c:if test="${not empty TemporaryBookingController.temporaryBookings}">
         <h:form>
         <footer>
-	        <div class="row">
+        <div class="row mt-2">
+	        	<div class="col-sm-8">
+	        		<h4>Complete your Booking by Entering the details:</h4>
+	        	</div>
+	    </div>
+	        <div class="row mt-4">
 	        	<div class="col-sm-2">
-					<h4>Enter your Name: </h4>
+					<h4>Full Name: </h4>
 				</div>
 	        	<div class="col-sm-6">
 			    	<p:inputText id="customerName" value="#{BookingController.customerName}" label="Customer Name" required="true" requiredMessage="Customer Name cannot be Blank" type="text"/>
 			    </div>
 			</div>
-			<div class="row">
+			<div class="row mt-3">
+	        	<div class="col-sm-2">
+					<h4>Email: </h4>
+				</div>
+	        	<div class="col-sm-6">
+			    	<p:inputText id="email" value="#{BookingController.email}" label="Email" required="true" requiredMessage="Email cannot be Blank" type="email"/>
+			    </div>
+			</div>
+			<div class="row mt-3">
+	        	<div class="col-sm-2">
+					<h4>Contact Number: </h4>
+				</div>
+	        	<div class="col-sm-2">
+			    	<p:inputText id="number" value="#{BookingController.number}" label="Contact Number" required="true" requiredMessage="Contact Number cannot be Blank" type="number">
+			    	<f:validateLength minimum = "10" maximum = "10" />
+			    	</p:inputText>
+			    </div>
+			    <div class="col-sm-2">
+					<h6><sub>*Should be 10 digits!</sub> </h6>
+				</div>
+			</div>
+			<div class="row mt-3">
 				<div class="col-sm-2">
 				</div>
 				<div class="col-sm-6">
 					<h:commandButton value="Confirm Booking" type="submit" action="#{BookingController.addBookings(TemporaryBookingController.temporaryBookings, HotelController)}" />
 				</div>
+				
 			</div>	
+			<div class="row mt-3">
+				<div class="col-sm-4">
+				</div>
+				<div class="col-sm-6">
+					<h6><small>*Once booked you cannot cancel</small></h6>
+				</div>
+			</div>
 		</footer>
 		</h:form>
 		</c:if>

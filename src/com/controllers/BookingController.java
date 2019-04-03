@@ -27,7 +27,8 @@ import com.controllers.SuccessController;
 public class BookingController {
 	private List<BookingDay> BookingDays;
 	private String customerName;
-	
+	private String email;
+	private int number;
 	
 	public BookingController() {
 		setBookingDays(new ArrayList<>());
@@ -59,12 +60,38 @@ public class BookingController {
 		this.customerName = customerName;
 	}
 	
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	/**
+	 * @return the number
+	 */
+	public int getNumber() {
+		return number;
+	}
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	
 	public String addBookings(List<TemporaryBooking> temporaryBookings,HotelController hotelController) {
 		int i=0;
 		ApplicationDao dao=new ApplicationDao();
 		int bookingId=0;
 		if(temporaryBookings.size()>0) {
-			Booking booking=new Booking(this.customerName);
+			Booking booking=new Booking(this.customerName,this.email,this.number);
 			bookingId=dao.addBooking(booking);
 		}else {
 			return "Nothing to Book";

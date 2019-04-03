@@ -3,12 +3,46 @@ package com.beans;
 public class Booking {
 	private int id;
 	private String customerName;
+	private String email;
+	private int number;
+	
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	/**
+	 * @return the number
+	 */
+	public int getNumber() {
+		return number;
+	}
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(int number) {
+		this.number = number;
+	}
 	public Booking() {
 		// TODO Auto-generated constructor stub
 	}
-	public Booking(int id,String customerName) {
+	public Booking(String customerName, String email, int number) {
+		this.customerName= customerName;
+		this.email=email;
+		this.number=number;
+	}
+	public Booking(int id,String customerName, String email, int number) {
 		this.id=id;
 		this.customerName= customerName;
+		this.email=email;
+		this.number=number;
 	}
 	public Booking(String customerName) {
 		this.customerName= customerName;

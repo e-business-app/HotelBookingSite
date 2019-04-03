@@ -136,7 +136,7 @@ public class ApplicationDao {
 	}
 	
 	public int addBooking(Booking booking) {
-		String query = "INSERT INTO Bookings (customerName) VALUES ('"+booking.getCustomerName()+"')";
+		String query = "INSERT INTO Bookings (customerName,email,number) VALUES ('"+booking.getCustomerName()+"','"+booking.getEmail()+"',"+booking.getNumber()+")";
 		Connection connection = DBConnection.getConnectionToDatabase();
 		int id=0;
 		try {

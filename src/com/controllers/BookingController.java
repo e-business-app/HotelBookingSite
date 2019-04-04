@@ -28,7 +28,7 @@ public class BookingController {
 	private List<BookingDay> BookingDays;
 	private String customerName;
 	private String email;
-	private int number;
+	private long number;
 	
 	public BookingController() {
 		setBookingDays(new ArrayList<>());
@@ -76,18 +76,18 @@ public class BookingController {
 	/**
 	 * @return the number
 	 */
-	public int getNumber() {
+	public long getNumber() {
 		return number;
 	}
 	/**
 	 * @param number the number to set
 	 */
-	public void setNumber(int number) {
+	public void setNumber(long number) {
 		this.number = number;
 	}
 	
 	public String addBookings(List<TemporaryBooking> temporaryBookings,HotelController hotelController) {
-		int i=0;
+		int counter=0;
 		ApplicationDao dao=new ApplicationDao();
 		int bookingId=0;
 		if(temporaryBookings.size()>0) {
@@ -96,9 +96,9 @@ public class BookingController {
 		}else {
 			return "Nothing to Book";
 		}
-		while (i < temporaryBookings.size()) {
-			System.out.println(temporaryBookings.get(i));
-			TemporaryBooking temporaryBooking=temporaryBookings.get(i);
+		while (counter < temporaryBookings.size()) {
+			System.out.println(temporaryBookings.get(counter));
+			TemporaryBooking temporaryBooking=temporaryBookings.get(counter);
 			DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 	    	LocalDate startDate = LocalDate.parse(temporaryBooking.getStartDate(), formatter);
 	    	LocalDate endDate = LocalDate.parse(temporaryBooking.getEndDate(), formatter);
@@ -107,7 +107,7 @@ public class BookingController {
 	    		String dateStringified=date.toString();
 	    	    dao.addBookingDay(dateStringified,temporaryBooking.getHotelId(),temporaryBooking.getPrice(),temporaryBooking.getRooms(),bookingId);
 	    	}
-			i++;
+	    	counter++;
 		}
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 	            .getExternalContext().getSession(false);

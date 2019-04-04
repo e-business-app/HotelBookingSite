@@ -4,7 +4,7 @@ public class Booking {
 	private int id;
 	private String customerName;
 	private String email;
-	private int number;
+	private long number;
 	
 	/**
 	 * @return the email
@@ -21,7 +21,7 @@ public class Booking {
 	/**
 	 * @return the number
 	 */
-	public int getNumber() {
+	public long getNumber() {
 		return number;
 	}
 	/**
@@ -33,7 +33,7 @@ public class Booking {
 	public Booking() {
 		// TODO Auto-generated constructor stub
 	}
-	public Booking(String customerName, String email, int number) {
+	public Booking(String customerName, String email, long number) {
 		this.customerName= customerName;
 		this.email=email;
 		this.number=number;
